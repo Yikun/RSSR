@@ -5,13 +5,13 @@ import operator
 
 
 def sample(inpath, outpath, samplenum):
-	"""
-	Sample data by 1/samplenum sample rate
-	"""
-	with open(inpath, 'r') as infile, open(outpath, 'w') as outfile:
-		for row in infile:
-			if random.randint(0, samplenum) == 0:
-				outfile.write(row)
+    """
+    Sample data by 1/samplenum sample rate
+    """
+    with open(inpath, 'r') as infile, open(outpath, 'w') as outfile:
+        for row in infile:
+            if random.randint(0, samplenum) == 0:
+                outfile.write(row)
 
 
 def gen_history(inpath, outpath):
@@ -55,9 +55,9 @@ def wash_torrent(inpath, outpath):
 
 if __name__ == '__main__':
     # Sample data
-	sample("../data/user.csv", "../data/test/user.csv", 3000)
-	sample("../data/torrent.csv", "../data/test/torrent.csv", 3000)
-	sample("../data/history.csv", "../data/test/history.csv", 50000)
+    sample("../data/user.csv", "../data/test/user.csv", 3000)
+    sample("../data/torrent.csv", "../data/test/torrent.csv", 3000)
+    sample("../data/history.csv", "../data/test/history.csv", 50000)
     # Wash the comma of torrent's title.
     wash_torrent("../data/rsdata_11-27/torrents.csv", "../data/torrent.csv")
     # Generate downloads history.(time, downloads)
