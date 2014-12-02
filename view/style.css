@@ -1,0 +1,12 @@
+h1 {
+  text-align:center;
+}
+h2 {
+  padding: 6px;
+  border-left: 4px solid #5B90BF;
+  background-color: #f6f6f6;
+}
+.content {
+	width: 60%;
+	margin: auto;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+	<head>
+		<title>睿思统计</title>
+		<meta charset = "UTF-8">
+		<script src="Chart.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+	</head>
+
+	<body>
+	<div style="width:60%;margin:auto;">
+		<h1>睿思数据统计</h1>
+		<h2>每月种子下载统计</h2>
+		<div class="labeled-chart-container">
+			<div id="legend"></div>
+			<canvas id="canvas" height="600" width="1200"></canvas>
+		</div>
+	</div>
+
+	<script>
+		var lineChartData = {
+			labels : ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"],
+			datasets : [
+				{
+					label: "2012年",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [0,0,0,0,14,257359,318732,349348,610692,655569,726853,773751]
+				},
+				{
+					label: "2013年",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [692275,188664,780667,550039,614929,594440,329628,305338,546051,534296,633703,622222]
+				},
+				{
+					label: "2014年",
+					fillColor : "rgba(163, 190, 140,0.2)",
+					strokeColor : "rgba(163, 190, 140,1)",
+					pointColor : "rgba(163, 190, 140,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(163, 190, 140,1)",
+					data : [354812,213188,609795,531197,574229,554483,328326,313530,623082,553770,523031,0]
+				}
+			]
+
+		}
+
+	window.onload = function(){
+
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+			responsive: true
+		});
+
+		document.getElementById('legend').innerHTML = myLine.generateLegend();
+	};
+	</script>
+
+	</body>
+</html>
