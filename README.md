@@ -1,4 +1,4 @@
-rsrec
+RSSR(Rui Si Statistic Recomendation)
 =====
 
-A simple recommendation system for RS.
+A simple statistical and recommendation system for RS.
