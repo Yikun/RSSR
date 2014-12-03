@@ -49,16 +49,20 @@ def wash_torrent(inpath, outpath):
         reader = csv.reader(infile)
 
         for row in reader:
-            rowcontent = ("%s,%s,%s,%s,%s,%s,%s,%s\n") % (
-                row[0], ''.join(row[1:-6]), row[-6], row[-5], row[-4], row[-3], row[-2], row[-1])
+            last = [0, 0]
+            if row[-2] != '':
+                last = row[-2].split('#')
+
+            rowcontent = ("%s,%s,%s,%s,%s,%s,%s,%s,%s\n") % (
+                row[0], ''.join(row[1:-6]), row[-6], row[-5], row[-4], row[-3], last[0], last[-1], row[-1])
             outfile.write(rowcontent)
 
 if __name__ == '__main__':
+    # Wash the comma of torrent's title.
+    wash_torrent("../data/rsdata_11-27/torrents.csv", "../data/torrent.csv")
+    # Generate downloads history.(time, downloads)
+    gen_history("../data/history.csv", "../data/history.dat")
     # Sample data
     sample("../data/user.csv", "../data/test/user.csv", 3000)
     sample("../data/torrent.csv", "../data/test/torrent.csv", 3000)
     sample("../data/history.csv", "../data/test/history.csv", 50000)
-    # Wash the comma of torrent's title.
-    wash_torrent("../data/rsdata_11-27/torrents.csv", "../data/torrent.csv")
-    # Generate downloads history.(time, downloads)
-    gen_history("../data/history.csv","../data/history.dat")
